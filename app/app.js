@@ -1,5 +1,6 @@
 //expressjs
 var express = require('express');
+var reload = require('reload');
 var app = express();
 var dataFile = require('./data/data.json');
 
@@ -14,6 +15,7 @@ var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
 });
 
+reload(server, app);
 // node.js
 // var http = require("http");
 //
