@@ -4,6 +4,7 @@ var router = express.Router();
 //Speakers
 router.get("/speakers", function(req, res){
   var info ='';
+  var dataFile = req.app.get('appData');
   dataFile.speakers.forEach(function(item){
     info += `
     <li>
@@ -21,6 +22,7 @@ router.get("/speakers", function(req, res){
 
 //Speakers/:speakerid
 router.get("/speakers/:speakerid", function(req, res){
+  var dataFile = req.app.get('appData');
   var speaker = dataFile.speakers[req.params.speakerid];
   res.send(`
     <h1>${speaker.title}</h1>
