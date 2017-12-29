@@ -2,7 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 router.get("/", function(req, res){
-  res.render('index');  // app/views
+  var data = req.app.get('appData');
+  var pagePhotos = [];
+
+  data.speakers.forEach(function(item){
+    pagePhotos = pagePhotos.concat(item.artwork);
+  })
+  res.render('index', {
+    pageTitle: 'Home',
+    artwork: pagePhotos,
+    PageID: 'home'
+  });  // app/views
 });
 
 module.exports = router;
