@@ -10,12 +10,19 @@
               <% if (pageID == 'home') { %>
                 <img class="speakerslist-img img-circle" src="/images/speakers/<%= item.shortname %>_tn.jpg" alt="Photo of <%= item.shortname %>"></a>
               <% } %>
-              <% if (pageID == 'speakers') { %>
+              <% if (pageID == 'speakerList') { %>
                 <img class="speakerslist-img img-circle pull-left" src="/images/speakers/<%= item.shortname %>_tn.jpg" alt="Photo of <%= item.shortname %>"></a>
+              <% } %>
+              <% if (pageID == 'speakerDetail') { %>
+                <img class="speakerslist-img img-responsive pull-left" src="/images/speakers/<%= item.shortname %>.jpg" alt="Photo of <%= item.shortname %>"></a>
               <% } %>
             </a>
             <% if (pageID !== 'home') { %>
-              <%= item.summary %>
+              <% if (pageID == 'speakerList') { %>
+                <%= item.summary %>
+              <% } else { %>
+                <%- item.description %>
+              <% } %>
             <% } %>
           </p>
         </div>
